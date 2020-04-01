@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('trangchu');
 });
+Route::get('/index', function () {
+    return view('masterlayout');
+});
 /*Route::get('/hello', function(){
     return view('hello', ['name' => 'Kmin']);
     });
