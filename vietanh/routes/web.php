@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('trangchu');
 });
 Route::get('/index', function () {
-    return view('masterlayout');
+    return view('index');
+});
+Route::get('/profile', function () {
+    return view('profile');
 });
 /*Route::get('/hello', function(){
     return view('hello', ['name' => 'Kmin']);
