@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('trangchu');
 });
 /*Route::get('/hello', function(){
     return view('hello', ['name' => 'Kmin']);
@@ -36,13 +36,17 @@ Route::get('/', function () {
         });
         Route::post(‘/nhanvien/{id}’,nhanvienController@update)
         {
-        });*/
-Route::get('/trangchu',function (){
-    return view('trangchu');
-});
-Route::get('/trangchu',function (){
-    return view('trangchu');
-});
+        });*/ 
+Route::get('/nhanvien','nhanvienController@nhanvien' );
+Route::get('/phongban','phongbanController@phongban' );
+
+Route::get('/addnv','addnvController@addnv' );
+
+Route::get('/quanlyns','quanlynsController@quanlyns' );
+
+Route::get('/trangchu','trangchuController@trangchu' );
+
+
 
    
 
