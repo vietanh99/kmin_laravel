@@ -5,7 +5,8 @@ $a = $_GET['txtname'];
 echo $a."<br> <br>";
 $b = $_GET['txtsdt'];
 echo $b."<br><br>";
-$b = $_GET['txtdiachi'];
-echo $b;
+$c = $_GET['txtdiachi'];
+echo $c;
+
 ?>
 @endsection
