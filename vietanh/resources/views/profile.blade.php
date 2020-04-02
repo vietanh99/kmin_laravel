@@ -1,12 +1,6 @@
 @extends('masterlayout')
 @section('content')
-<?php
-$a = $_GET['txtname'];
-echo $a."<br> <br>";
-$b = $_GET['txtsdt'];
-echo $b."<br><br>";
-$c = $_GET['txtdiachi'];
-echo $c;
+<h1>{{ $a }}</h1> <br>
+<h1>{{ $b }}</h1> <br><h1>{{ $c }}</h1> 
 
-?>
 @endsection
