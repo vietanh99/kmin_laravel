@@ -6,13 +6,13 @@
     <title>Bài tập 2</title>
 </head>
 <body>
-@include('header')
+@include('baitap.header')
 
 
 
     @yield('content')
 
-@include('footer')
+@include('baitap.footer')
 
 </body>
 </html>
