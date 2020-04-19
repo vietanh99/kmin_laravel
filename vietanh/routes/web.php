@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\nhanviens;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,24 @@ Route::get('/bangcong','bangcongController@bangcong' );
 Route::get('/bangluong','bangluongController@bangluong' );
 Route::get('/baohiemyte','baohiemController@baohiem' );
 Route::get('/du_an','duanController@duan' );
+Route::get("insert",function(){
+
+    for($i=1;$i<=10;$i++){
+        $user = new nhanviens();
+        $user->nhanvien_username="vietanh".$i;
+        $user->nhanvien_gmail="email".$i."@gmail.com";
+        $user->nhanvien_hovaten="phamvietanh".$i;
+        $user->nhanvien_password=rand(1000,2000);
+        $user->save();
+    }
+    
+});
+Route::get("get",function(){
+    foreach(nhanviens::get() as $user){
+        echo $user->nhanvien_username;
+    }
+});
+Route::get('insertPhongban' , 'phongbanController@insert');
 
 
 

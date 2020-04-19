@@ -1,5 +1,4 @@
-<?php use App\Phongban;
- ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,71 +77,25 @@
 
 <div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-th"></i>Tables</a>
 	<ul>
-		<li><a href="index.php"><i class="icon icon-home"></i> <span>Trang chủ</span></a> </li>
+		<li><a href=""><i class="icon icon-home"></i> <span>Trang chủ</span></a> </li>
+		<li> <a href="nhanvien"><i class="icon icon-th-list"></i> <span>Nhân viên</span></a></li>
+        <li> <a href="phongban"><i class="icon icon-th-list"></i> <span>Phòng ban</span></a></li>
+		<li> <a href="baohiemyte"><i class="icon icon-th-list"></i> <span>Bảo hiểm y tế</span></a></li>
+        <li> <a href="bangcong"><i class="icon icon-th-list"></i> <span>Bảng công </span></a></li>
+		<li> <a href="bangluong"><i class="icon icon-th-list"></i> <span>Bảng lương</span></a></li>
+        <li> <a href="duan"><i class="icon icon-th-list"></i> <span>Dự án</span></a></li>
 
-		<li> <a href="form.php"><i class="icon icon-th-list"></i> <span>Quản lý nhân sự</span></a></li>
-		<li> <a href="manufactures.php"><i class="icon icon-th-list"></i> <span>Nhân viên</span></a></li>
+
+
 
 
 
 	</ul>
 </div>
-<!-- BEGIN CONTENT -->
-<div id="content">
-	<div id="content-header">
-		<div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Phòng ban</h1>
-	</div>
-	<div class="container-fluid">
-		<hr>
-		<div class="row-fluid">
-			<div class="span12">
-				<div class="widget-box">
-					
-					</div>
-					<div class="widget-content nopadding">
-						<table class="table table-bordered table-striped">
-												<tr>
 
-							<thead>
-								
-								<th>Mã phòng ban</th>
-								<th>Tên phòng ban</th>
-								
-							</tr>
-							</thead>
-							<tbody>
-							<?php foreach(Phongban::get() as $user){?> 	
-							<tr class="">
-								
-								<td><?php echo $user->maPhongban; ?> </td>
-								<td><?php echo $user->tenPhongban; ?> </td>
-								
-								<td>
-							
-								<a href="insertPhongban" class="btn btn-success btn-mini">Thêm</a>
-  
-									<a href="form.php" class="btn btn-success btn-mini">Edit</a>
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
-								</td>
-							</tr>
-							<?php }?>
-						</tbody>
-						</table>
-						<ul class="pagination">
-							
-							
-							
-						</ul>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- END CONTENT -->
-<!--Footer-part-->
+
+@yield('content')
+
 <div class="row-fluid">
 	<div id="footer" class="span12"> 2017 &copy; TDC - Lập trình web 1</div>
 </div>
@@ -157,4 +110,3 @@
 <script src="public/js/matrix.tables.js"></script>
 </body>
 </html>
-
