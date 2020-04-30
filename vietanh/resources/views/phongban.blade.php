@@ -22,26 +22,28 @@
 							<thead>
 								
 								<th>Mã phòng ban</th>
-								<th>Tên phòng ban</th>
+ <th>Tên phòng ban</th>
 								
 							</tr>
+							
 							</thead>
 							<tbody>
-							<?php foreach(Phongban::get() as $user){?> 	
+							@foreach(Phongban::get() as $user)
 							<tr class="">
 								
-								<td><?php echo $user->maPhongban; ?> </td>
-								<td><?php echo $user->tenPhongban; ?> </td>
+								<td>{{$user->maPhongban }}  </td>
+								<td>{{ $user->tenPhongban }} </td>
+							
 								
 								<td>
 							
-								<a href="insertPhongban" class="btn btn-success btn-mini">Thêm</a>
+								<a href="form" class="btn btn-success btn-mini">Thêm</a>
   
-									<a href="form.php" class="btn btn-success btn-mini">Edit</a>
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
+									<a href="phongban/getedit/{{$user->phongban_id }}" class="btn btn-success btn-mini">Edit</a>
+									<a href="phongban/deletePhongban/{{$user->phongban_id }}" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 							</tr>
-							<?php }?>
+							@endforeach
 						</tbody>
 						</table>
 						<ul class="pagination">

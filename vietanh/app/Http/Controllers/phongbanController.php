@@ -11,12 +11,29 @@ class phongbanController extends Controller
     {
         return view('phongban') ;
     }
-    public function insert()
+    public function addPhongban(Request $request)
     {
-        $user = new Phongban;
-        $user->maPhongban="002";
-        $user->tenPhongban="Nhanvien";
-        $user->save();
-        return view('phongban') ;
-}
+        $phongban = new Phongban;
+
+        $phongban->maPhongban=$request->input('maPhongban');
+        $phongban->tenPhongban=$request->input('tenPhongban');
+        $phongban->save();
+        return redirect('phongban');
+    }
+    public function deletePhongban($phongban_id){
+       Phongban::where('phongban_id' , $phongban_id)->delete();
+       return redirect()->back();
+    }
+
+    public function getEdit($phongban_id){
+        $phongban = Phongban::where('phongban_id',$phongban_id);
+        return view('edit',compact('phongban'));
+    }
+    public function postEdit(Request $request){
+
+    }
+    /*public function ajax(Request $request){
+        $show_id = $request->post('show_id');
+        return view('phongban',compact('$show_id'));
+    }*/ 
 }

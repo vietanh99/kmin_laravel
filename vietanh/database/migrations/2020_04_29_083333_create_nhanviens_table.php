@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNhanvienTable extends Migration
+class CreateNhanviensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,17 @@ class CreateNhanvienTable extends Migration
      */
     public function up()
     {
-        Schema::create('nhanvien', function (Blueprint $table) {
-            $table->increments('nhanvien_id');
- 
-    $table->string('nhanvien_username');
-     
-    $table->string('nhanvien_gmail');
-     
-    $table->string('nhanvien_password');
-    $table->string('nhanvien_hovaten');
+        Schema::create('nhanviens', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('age');
+            $table->string('email');
+            $table->string('phongban');
+            $table->string('images');
             $table->timestamps();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *
@@ -33,6 +31,6 @@ class CreateNhanvienTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nhanvien');
+        Schema::dropIfExists('nhanviens');
     }
 }

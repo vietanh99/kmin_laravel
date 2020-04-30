@@ -1,46 +1,51 @@
-
+<?php
+use App\Nhanvien;
+?>
 @extends('layout.masterlayout')
 @section('content')
 <!-- BEGIN CONTENT -->
 <div id="content">
 	<div id="content-header">
 		<div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Quẩn lý nhân sự</h1>
+		<h1>Nhân viên</h1>
 	</div>
 	<div class="container-fluid">
 		<hr>
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
-					<div class="widget-title"> <span class="icon"><a href="form.php"> <i class="icon-plus"></i> </a></span>
-						<h5>Products</h5>
-					</div>
+					
 					<div class="widget-content nopadding">
 						<table class="table table-bordered table-striped">
 							<thead>
 							<tr>
-								<th></th>
+								
 								<th>Name</th>
-								<th>Category</th>
-								<th>Producer</th>
-								<th>Description</th>
-								<th>Price (VND)</th>
+								<th>Tuổi</th>
+								<th>Email</th>
+								<th>Phòng ban</th>
+								<th>Images</th>
 								<th>Action</th>
 							</tr>
 							</thead>
 							<tbody>
-								
+								@foreach(Nhanvien::get() as $nhanvien)
+
 							<tr class="">
-								<td> <img src="public/images/"> </td>
-								<td> </td>
-								<td> </td>
-								<td> </td>
-								<td> </td>
-								<td> </td>
+								
+								
+								<th>{{$nhanvien->name}} </th>
+								<th>{{$nhanvien->age}}  </th>
+								<th>{{$nhanvien->email}}  </th>
+								<th>{{$nhanvien->phongban}}  </th>
+								<th> <img src="public/images/{{$nhanvien->images}} " width="50" height="50"> </th>
 								<td>
-									<a href="form.php" class="btn btn-success btn-mini">Edit</a>
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
+									<a href="form_nhanvien" class="btn btn-success btn-mini">Thêm</a>
+
+									<a href="formEdit/{{$nhanvien->id}}" class="btn btn-success btn-mini">Edit</a>
+									<a href="deleteNhanvien/{{$nhanvien->id}}" class="btn btn-danger btn-mini">Delete</a>
 								</td>
+								@endforeach
 							</tr>
 						
 						</tbody>
