@@ -1,6 +1,7 @@
 <?php
 use App\Nhanvien;
 ?>
+
 @extends('layout.masterlayout')
 @section('content')
 <!-- BEGIN CONTENT -->
@@ -38,14 +39,15 @@ use App\Nhanvien;
 								<th>{{$nhanvien->age}}  </th>
 								<th>{{$nhanvien->email}}  </th>
 								<th>{{$nhanvien->phongban}}  </th>
-								<th> <img src="public/images/{{$nhanvien->images}} " width="50" height="50"> </th>
+								<th> <img src="public/images/{{$nhanvien->images}} " width="80" height="80"> </th>
 								<td>
-									<a href="form_nhanvien" class="btn btn-success btn-mini">Thêm</a>
 
 									<a href="formEdit/{{$nhanvien->id}}" class="btn btn-success btn-mini">Edit</a>
 									<a href="deleteNhanvien/{{$nhanvien->id}}" class="btn btn-danger btn-mini">Delete</a>
 								</td>
 								@endforeach
+								<a href="form_nhanvien" class="btn btn-success btn-mini">Thêm</a>
+
 							</tr>
 						
 						</tbody>

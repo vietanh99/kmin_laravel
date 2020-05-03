@@ -90,6 +90,10 @@
 					<div class="widget-content nopadding">
 
 						<!-- BEGIN USER FORM -->
+						@foreach ($errors->all() as $error)
+					<li>{{$error}}</li>
+							
+						@endforeach
 						<form action="addNhanvien" method="get" class="form-horizontal" enctype="multipart/form-data">
 							<div class="control-group">
 								<label class="control-label">Name :</label>
@@ -137,6 +141,7 @@
 								</div>
 
 						</form>
+						
 						<!-- END USER FORM -->
 
 
@@ -164,3 +169,4 @@
 <script src="public/js/matrix.tables.js"></script>
 </body>
 </html>
+

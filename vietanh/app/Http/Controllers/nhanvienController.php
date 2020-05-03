@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Nhanvien;
 use App\Phongban;
+use Validator;
+
 
 use Illuminate\Http\Request;
 
@@ -20,6 +22,20 @@ class nhanvienController extends Controller
         return view('form_nhanvien');
     }
     public function addNhanvien(Request $request){
+
+        $request->validate([
+            'name' => 'required',
+            'tuoi' => 'required',
+            'email' => 'required',
+            'phongban' => 'required',
+            
+        ],
+        [
+            'name.required' => 'Bạn chưa nhập họ tên',
+            'tuoi.required' => 'Bạn chưa nhập tuổi',
+            'email.required' => 'Bạn chưa nhập email',
+            'phongban.required' => 'Bạn chưa nhập phòng ban',
+        ]);
         $nhanvien= new Nhanvien;
         $nhanvien->name=$request->input('name');
         $nhanvien->age=$request->input('tuoi');
@@ -39,9 +55,11 @@ class nhanvienController extends Controller
 
         $nhanvien->save();
         return view('nhanvien') ;
+        
 
 
     }
+
     public function deleteNhanvien($id){
         $nhanvien = Nhanvien::where('id' , $id)->delete();
         return redirect()->back();

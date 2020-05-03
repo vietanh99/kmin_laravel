@@ -24,7 +24,7 @@
 							<div class="control-group">
 								<label class="control-label">Name :</label>
 								<div class="controls">
-									<input type="text" class="span11" placeholder="Name" name="name" value="{{$nhanvien	['name']}}" /> *
+									<input type="text" class="span11" placeholder="Name" name="name" value="{{$nhanvien['name']}}" /> *
 								</div>
 							</div>
 							
