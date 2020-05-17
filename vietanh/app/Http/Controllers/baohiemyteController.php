@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class baohiemController extends Controller
+class baohiemyteController extends Controller
 {
     public function __construct() {
         $this->middleware('auth');
     }
- public function baohiem(){
-    return view('baohiemyte') ;
-
-}}
-
+    public function index(){
+        return view('baohiemyte');
+    }
+}

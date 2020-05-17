@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\phongbanController;
+use App\Nhanvien;
 use Illuminate\Support\Facades\Route;
 use App\nhanviens;
+use Facade\FlareClient\Http\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +18,7 @@ use App\nhanviens;
 */
 
 Route::get('/', function () {
-    return view('trangchu');
+    return view('login');
 });
 Route::get('/index', function () {
     return view('baitap.index');
@@ -28,16 +30,11 @@ Route::get('/form', function () {
     return view('form');
 });
 Route::get('/profile', 'indexController@index' );
-Route::get('/nhanvien','nhanvienController@nhanvien' );
-Route::get('/phongban',"phongbanController@phongban");
-//Route::get('/phongbanadd','phongbanController@addPhongban' );
-//Route::get('/phongbandelete/{phongban_id}','phongbanController@phongbandelete');
-
-Route::get('/trangchu','trangchuController@trangchu' );
-Route::get('/bangcong','bangcongController@bangcong' );
-Route::get('/bangluong','bangluongController@bangluong' );
-Route::get('/baohiemyte','baohiemController@baohiem' );
-Route::get('/du_an','duanController@duan' );
+Route::get('/nhanvien' , ["as"=>'nhanvien' ,'uses'=>'nhanvienController@nhanvien'] );
+Route::get('/phongban', ["as"=>'phongban', 'uses' => "phongbanController@phongban"]);
+Route::get('/bangcong',["as"=>'bangcong' , 'uses'=>'bangcongController@bangcong' ]);
+Route::get('/bangluong',["as"=>'bangluong' ,'uses'=> 'bangluongController@bangluong' ]);
+Route::get('/baohiemyte',['as'=>'baohiemyte', 'uses'=>'baohiemController@baohiem' ]);
 Route::get('insertPhongban' , 'phongbanController@insert');
 
 Route::group(['prefix'=>'phongban'],function(){
@@ -51,9 +48,25 @@ Route::get('form_nhanvien', 'nhanvienController@Nhanvienform');
 Route::get('addNhanvien', 'nhanvienController@addNhanvien');
 Route::get('formEdit/addNhanvien2/{id}' , 'nhanvienController@addNhanvien2');
 
-Route::get('deleteNhanvien/{id}', 'nhanvienController@deleteNhanvien');
+Route::get('deleteNhanvien/{id}','nhanvienController@deleteNhanvien');
 Route::get('formEdit/{id}','nhanvienController@editNhanvien');
-
+Route::get('login','loginController@login');
+Route::post('/getlogin', 'loginController@getlogin');
+Route::get('logout','loginController@logout');
+Route::get('form_bangcong', 'bangcongController@formbangcong' );
+Route::get('addBangcong' , 'bangcongController@addBangcong' );
+Route::get('deletebangcong/{id}','bangcongController@deleteBangcong');
+Route::get('editBangcong/{id}' , 'bangcongController@getEdit');
+Route::get('editBangcong/postEdit_bangcong/{id}' , 'bangcongController@postEdit');
+Route::get('baohiemyte', ['as'=>'baohiemyte','uses'=>'baohiemyteController@index'] );
+Route::get('bangluong' , ['as'=>'bangluong' , 'uses'=>'bangluongController@index']);
+Route::get('form_bangluong', 'bangluongController@form_bangluong');
+Route::get('addbangluong', 'bangluongController@addbangluong');
+Route::post('search','searchController@search');
+Route::delete('/links/{nhanvien_id?}', function ($nhanvien_id) {
+    $nhanvien = Nhanvien::destroy($nhanvien_id);
+    //return Response::json($nhanvien);
+});
 
 
 

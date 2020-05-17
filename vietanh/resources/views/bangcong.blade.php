@@ -1,5 +1,5 @@
-<?php use App\Phongban;
- ?>
+<?php use App\Bangcong;
+?>	
 @extends('layout.masterlayout')
 @section('content')
 <!-- BEGIN CONTENT -->
@@ -19,29 +19,41 @@
 						<table class="table table-bordered table-striped">
 												<tr>
 
-							<thead>
-								
-								<th>Mã phòng ban</th>
- <th>Tên phòng ban</th>
-								
-							</tr>
-							</thead>
-							<tbody>
-							<?php foreach(Phongban::get() as $user){?> 	
-							<tr class="">
-								
-								<td><?php echo $user->maPhongban; ?> </td>
-								<td><?php echo $user->tenPhongban; ?> </td>
-								
-								<td>
+													<thead>
+														<tr>
+															
+															<th>Name</th>
+															<th>Số công</th>
+															
+														</tr>
+														</thead>
+														<tbody>
+															@foreach(bangcong::get() as $bangcong)
 							
-								<a href="insertPhongban" class="btn btn-success btn-mini">Thêm</a>
-  
-									<a href="form.php" class="btn btn-success btn-mini">Edit</a>
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
-								</td>
-							</tr>
-							<?php }?>
+														<tr class="">
+															
+															
+															<th>{{$bangcong->name}} </th>
+															<th>{{$bangcong->bangcong}}  </th>
+															
+															<td>
+							                                
+									@if (Auth::check())
+									@if( Auth::user()->level == 1)
+																<a href="editBangcong/{{$bangcong->id}}" class="btn btn-success btn-mini">Edit</a>
+																<a href="deletebangcong/{{$bangcong->id}}" class="btn btn-danger btn-mini">Delete</a>
+															</td>
+															@endif
+															
+									@endif
+															@endforeach
+															@if (Auth::check())
+									@if( Auth::user()->level == 1)
+															<a href="form_bangcong" class="btn btn-success btn-mini">Thêm</a>
+															@endif
+															
+															@endif
+														</tr>
 						</tbody>
 						</table>
 						<ul class="pagination">

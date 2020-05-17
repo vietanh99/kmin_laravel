@@ -1,5 +1,6 @@
-<?php use App\Phongban;
- ?>
+<?php 
+use App\bangluong;
+?>
 @extends('layout.masterlayout')
 @section('content')
 <!-- BEGIN CONTENT -->
@@ -21,27 +22,42 @@
 
 							<thead>
 								
-								<th>Mã phòng ban</th>
- <th>Tên phòng ban</th>
+								<th>Tên nhân viên</th>
+ <th>Số công</th>
+ <th>Lương theo ngày</th>
+
+ <th>Tổng lương</th>
 								
 							</tr>
 							</thead>
 							<tbody>
-							<?php foreach(Phongban::get() as $user){?> 	
+								@foreach (bangluong::get() as $bangluong)
+
 							<tr class="">
+									
 								
-								<td><?php echo $user->maPhongban; ?> </td>
-								<td><?php echo $user->tenPhongban; ?> </td>
+								<td>{{$bangluong->tennhanvien}} </td>
+								<td>{{$bangluong->socong}} </td>
+								<td>{{$bangluong->luongngay}} </td>
+								<td>{{$bangluong->luongtong}} </td>
+
+
 								
 								<td>
 							
-								<a href="insertPhongban" class="btn btn-success btn-mini">Thêm</a>
+									@if (Auth::check())
+									@if( Auth::user()->level == 1)
+								<a href="form_bangluong" class="btn btn-success btn-mini">Thêm</a>
   
-									<a href="form.php" class="btn btn-success btn-mini">Edit</a>
+									 
 									<a href="#" class="btn btn-danger btn-mini">Delete</a>
+									@endif
+									
+									@endif
 								</td>
+								@endforeach
+
 							</tr>
-							<?php }?>
 						</tbody>
 						</table>
 						<ul class="pagination">

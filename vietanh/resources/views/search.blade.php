@@ -1,3 +1,6 @@
+<?php
+use App\Nhanvien;
+?>
 
 @extends('layout.masterlayout')
 @section('content')
@@ -5,44 +8,58 @@
 <div id="content">
 	<div id="content-header">
 		<div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Quẩn lý nhân sự</h1>
+		<h1>Nhân viên</h1>
 	</div>
 	<div class="container-fluid">
 		<hr>
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
-					<div class="widget-title"> <span class="icon"><a href="form.php"> <i class="icon-plus"></i> </a></span>
-						<h5>Products</h5>
-					</div>
+					
 					<div class="widget-content nopadding">
 						<table class="table table-bordered table-striped">
 							<thead>
 							<tr>
-								<th></th>
+								
 								<th>Name</th>
-								<th>Category</th>
-								<th>Producer</th>
-								<th>Description</th>
-								<th>Price (VND)</th>
+								<th>Tuổi</th>
+								<th>Email</th>
+								<th>Phòng ban</th>
+								<th>Images</th>
+								
 								<th>Action</th>
+								
 							</tr>
 							</thead>
 							<tbody>
 								
-							<tr class="">
-								<td> <img src="public/images/"> </td>
-								<td> </td>
-								<td> </td>
-								<td> </td>
-								<td> </td>
-								<td> </td>
+								@foreach ($ten as $item)
+
+							<tr >
+								
+                                    
+								<th>{{$item->name}} </th>
+								<th>{{$item->age}}  </th>
+								<th>{{$item->email}} </th>
+								<th>{{$item->phongban}} </th>
+								<th> <img src="public/images/{{$item->images}} " width="80" height="80"> </th>
 								<td>
-									<a href="form.php" class="btn btn-success btn-mini">Edit</a>
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
+									
+									<a href="formEdit" class="btn btn-success btn-mini">Edit</a>
+									<a href="deleteNhanviens" class="btn btn-danger btn-mini">Delete</a>								
+									
 								</td>
-							</tr>
+								
+                                @endforeach
+
+
 						
+
+
+
+
+							</tr>
+
 						</tbody>
 						</table>
 						<ul class="pagination">
@@ -59,5 +76,6 @@
 </div>
 <!-- END CONTENT -->
 <!--Footer-part-->
+
 
 @endsection

@@ -11,14 +11,19 @@ use App\Nhanvien;
 		<h1>Nhân viên</h1>
 	</div>
 	<div class="container-fluid">
+		@isset($er)
+		{{$er}}
+	@endisset
 		<hr>
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
+				
 					
 					<div class="widget-content nopadding">
 						<table class="table table-bordered table-striped">
 							<thead>
+								
 							<tr>
 								
 								<th>Name</th>
@@ -26,13 +31,17 @@ use App\Nhanvien;
 								<th>Email</th>
 								<th>Phòng ban</th>
 								<th>Images</th>
+								@if (Auth::check())
+									@if( Auth::user()->level == 1)
 								<th>Action</th>
+								@endif
+								@endif
 							</tr>
 							</thead>
 							<tbody>
 								@foreach(Nhanvien::get() as $nhanvien)
 
-							<tr class="">
+							<tr >
 								
 								
 								<th>{{$nhanvien->name}} </th>
@@ -41,17 +50,29 @@ use App\Nhanvien;
 								<th>{{$nhanvien->phongban}}  </th>
 								<th> <img src="public/images/{{$nhanvien->images}} " width="80" height="80"> </th>
 								<td>
-
+									
+									@if (Auth::check())
+									@if( Auth::user()->level == 1)
 									<a href="formEdit/{{$nhanvien->id}}" class="btn btn-success btn-mini">Edit</a>
-									<a href="deleteNhanvien/{{$nhanvien->id}}" class="btn btn-danger btn-mini">Delete</a>
+									<a href="deleteNhanvien/{{$nhanvien->id}}" class="btn btn-danger btn-mini"></a>
+								<button class="btn btn-danger delete-link" value="{{$nhanvien->id}}">Delete
+
+									@endif
+									
+									@endif
+									
 								</td>
 								@endforeach
-								<a href="form_nhanvien" class="btn btn-success btn-mini">Thêm</a>
-
+                                @if (Auth::check())
+									@if( Auth::user()->level == 1)
+								<a  href="form_nhanvien" class="btn btn-success btn-mini">Thêm</a>
+								@endif
+								@endif
 							</tr>
-						
+
 						</tbody>
 						</table>
+						 
 						<ul class="pagination">
 							
 							
