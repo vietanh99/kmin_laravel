@@ -5,9 +5,11 @@ use App\Nhanvien;
 use App\Phongban;
 use Validator;
 use Illuminate\Support\Facades\Hash;
+use \Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class nhanvienController extends Controller
 {
@@ -17,7 +19,19 @@ class nhanvienController extends Controller
     public function nhanvien()
     {
         return view('nhanvien') ;
-    }
+        /*
+         $get= Phongban::all();
+         foreach($get as $g){
+             //echo $g->tenphongban;
+             echo '<br>';
+         foreach($g->getnhanvien as $getnv){
+             echo $getnv->name;
+         }
+         echo '<br>';
+ 
+          }*/
+        }
+
     public function Nhanvienform(){
 
         return view('form_nhanvien');
@@ -54,20 +68,30 @@ class nhanvienController extends Controller
         //$nhanvien = Hash::make('password');
         $nhanvien->age=$request->input('tuoi');
         $nhanvien->level=$request->input('level');
+        $nhanvien->nhanvien_id=$request->input('level');
+
 
         $nhanvien->email=$request->input('email');
         $nhanvien->phongban=$request->input('phongban');
-        /*if($request->hasFile('fileUpload')){
-            $nhanvien = $request->fileUpload;
+            /*$nhanvien = $request->fileUpload;
             $new_image_name = time();
             $nhanvien->getClientOriginalName();
-            $nhanvien->images->$request->input('fileUpload');
-            $nhanvien->move('public/images', $request->input('fileUpload'));
+            $destinationPath = public_path('public/images');
 
-        }*/
+            $nhanvien->images->$request->input('fileUpload');
+            $nhanvien->move($destinationPath, $new_image_name);
+            $nhanvien->save();*/
+
+
+        if($request->hasFile('fileUpload')){
+            if ($request->file('fileUpload')->isValid()){
+                $file_name = $request->file('fileUpload')->getClientOriginalName();
+                // Lưu file vào thư mục upload với tên là biến $filename
+                $request->file('fileUpload')->move('public/images',$file_name);
+            }}
         
         
-        $nhanvien->images=$request->input('fileUpload');
+        //$nhanvien->images=$request->input('fileUpload');
 
         $nhanvien->save();
         return view('nhanvien') ;
@@ -91,7 +115,7 @@ class nhanvienController extends Controller
 
         $nhanvien->email=$request->input('email');
         $nhanvien->phongban=$request->input('phongban');
-        if($request->hasFile('fileUpload')){
+        /*if($request->hasFile('fileUpload')){
             $nhanvien = $request->fileUpload;
             $new_image_name = time();
             $nhanvien->getClientOriginalName();
@@ -100,12 +124,12 @@ class nhanvienController extends Controller
             $nhanvien->save();
             $nhanvien->move('public/images' , $new_image_name);
 
-        }
+        }*/
         /*if($request->hasFile('fileUpload')){
             $request->file('fileUpload');
             $request->move('public/images');
         }*/
-        //$nhanvien->images=$request->input('fileUpload');
+        $nhanvien->images=$request->input('fileUpload');
 
         $nhanvien->save();
         return view('nhanvien') ;

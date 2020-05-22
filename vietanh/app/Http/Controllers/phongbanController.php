@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
+
 use App\Phongban;
 
 use Illuminate\Http\Request;
@@ -39,4 +39,11 @@ class phongbanController extends Controller
         $show_id = $request->post('show_id');
         return view('phongban',compact('$show_id'));
     }*/ 
-}
+    public function phongbanid(Request $request , $id){
+        $phongban = Phongban::find($id)->getnhanvien->toArray();
+        
+        
+        return view('chitietphongban',compact('phongban'));
+
+    }
+} 

@@ -67,6 +67,7 @@ Route::delete('/links/{nhanvien_id?}', function ($nhanvien_id) {
     $nhanvien = Nhanvien::destroy($nhanvien_id);
     //return Response::json($nhanvien);
 });
+Route::get('phongbanid/{id}', 'phongbanController@phongbanid' );
 
 
 

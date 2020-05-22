@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\bangluong;
+use App\Nhanvien;
 use Illuminate\Http\Request;
 
 class bangluongController extends Controller
@@ -16,10 +17,11 @@ class bangluongController extends Controller
     public function form_bangluong(){
         return view('form_bangluong');
     } 
-    public function addbangluong(Request $request){
+    public function addbangluong(Request $request ){
         $bangluong = new bangluong();
-        $bangluong->tennhanvien=$request->input('name');
+        $bangluong->tennhanvien =$request->mail;
         $bangluong->socong=$request->input('socong');
+
         $bangluong->luongngay=$request->input('luong');
         $bangluong->luongtong=$request->input('socong')*$request->input('luong');
         $bangluong->save();

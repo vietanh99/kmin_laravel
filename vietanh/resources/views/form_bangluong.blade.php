@@ -1,6 +1,9 @@
 
 @extends('layout.masterlayout')
 @section('content')
+<?php
+use App\Nhanvien;
+?>
 
 <!-- BEGIN CONTENT -->
 <div id="content">
@@ -20,31 +23,40 @@
 
 						<!-- BEGIN USER FORM -->
 						<form action="addbangluong" method="get" class="form-horizontal" enctype="multipart/form-data">
-
 							<div class="control-group">
-								<label class="control-label">Tên nhân viên :</label>
+								<label class="control-label">Chọn nhân viên </label>
 								<div class="controls">
-									<input type="text" class="span11" placeholder="Name" name="name" value="" /> *
-								</div>
-							</div>
+							<select name="mail">
+								<option value="--Chọn--" >--Chọn--</option>
+
+                        @foreach (Nhanvien::get() as $item)
+						<option value="{{$item->email}}" selected="mail">{{$item->email}}</option>
+						@endforeach
+
+					</select>
+				</div>
+				</div>			
+
 							
+						
 							<div class="control-group">
 								
 								<div class="control-group">
                                     <div class="control-group">
 										<label class="control-label">Số công :</label>
 										<div class="controls">
-										<input type="text" class="span11" placeholder="Tuổi" name = "socong" value="" /> *
+										<input type="text" class="span11" placeholder="Số công" name = "socong" value="" /> *
 										</div>
 
                                     </div>
 									<div class="control-group">
 										<label class="control-label">Lương theo ngày :</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="Email" name = "luong" value="" /> *
+											<input type="text" class="span11" placeholder="Lương" name = "luong" value="" /> *
 										</div>
 
-                                    </div>
+									</div>
+									
                                     
 								
 								

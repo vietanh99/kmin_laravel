@@ -1,12 +1,11 @@
-<?php use App\Phongban;
- ?>
+ 
 @extends('layout.masterlayout')
 @section('content')
 <!-- BEGIN CONTENT -->
 <div id="content">
 	<div id="content-header">
 		<div id="breadcrumb"> <a href="index.php" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Phòng ban</h1>
+		<h1>Danh sách nhân viên trong phòng ban</h1>
 	</div>
 	<div class="container-fluid">
 		<hr>
@@ -21,31 +20,33 @@
 
 							<thead>
 								
- <th>Tên phòng ban</th>
+								<th>Tên</th>
+								<th>Email</th>
+                                <th>Hình Ảnh</th>
+
 								
 							</tr>
-							
-							</thead>
+                            </thead>
+                            
+
 							<tbody>
-							@foreach(Phongban::get() as $user)
-							<tr class="">
+							@foreach ($phongban as $item)
+                                
+							<tr>
 								
-							<td><a href="phongbanid/{{ $user->id }}">{{ $user->tenphongban }}</a></td>
-							
+							<td>{{$item['name']}} </td>
+							<td>{{$item['email']}} </td>
+
+                            <td> <img src="{{ URL::to('public/images/' .$item['images'])}} " width="80" height="80"> </td>
+
+
 								
-								<td>
-									@if (Auth::check())
-									@if( Auth::user()->level == 1)
-								<a href="form" class="btn btn-success btn-mini">Thêm</a>
-  
-									
-									<a href="phongban/deletePhongban/{{$user->phongban_id }}" class="btn btn-danger btn-mini">Delete</a>
-								</td>
-								@endif
-									
-								@endif
 							</tr>
-							@endforeach
+							<tr>
+                                @endforeach
+
+								
+							</tr>
 						</tbody>
 						</table>
 						<ul class="pagination">

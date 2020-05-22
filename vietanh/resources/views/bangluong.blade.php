@@ -19,7 +19,13 @@ use App\bangluong;
 					<div class="widget-content nopadding">
 						<table class="table table-bordered table-striped">
 												<tr>
-
+													@if (Auth::check())
+													@if( Auth::user()->level == 1)
+												<a href="form_bangluong" class="btn btn-success btn-mini">Thêm</a>
+												@endif
+									
+									@endif
+				  
 							<thead>
 								
 								<th>Tên nhân viên</th>

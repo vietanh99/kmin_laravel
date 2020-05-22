@@ -53,6 +53,7 @@
 										</div>
 									</div>
 									
+									
 									<div class="control-group">
 										<label class="control-label">Email :</label>
 										<div class="controls">
@@ -72,7 +73,7 @@
 								<div class="control-group">
 									<label class="control-label">Choose an image :</label>
 									<div class="controls">
-										<input type="file" name="fileUpload" id="fileUpload">
+										<input type="file" name="fileUpload" >
 									</div>
 								</div>
 

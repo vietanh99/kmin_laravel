@@ -6,8 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nhanvien extends Model
 {
-    public $table ="nhanviens";
-    public function bangcong(){
-        return $this->hasOne('App/bangcong');
+    public $table ="nhanvien";
+
+    protected $primanykey = 'id';
+    protected $guarded = [];
+
+    public function phongban()
+    {
+        return $this->belongsTo(Phongban::class,'id');  
     }
+ 
 }

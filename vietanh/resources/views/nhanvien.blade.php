@@ -48,14 +48,13 @@ use App\Nhanvien;
 								<th>{{$nhanvien->age}}  </th>
 								<th>{{$nhanvien->email}}  </th>
 								<th>{{$nhanvien->phongban}}  </th>
-								<th> <img src="public/images/{{$nhanvien->images}} " width="80" height="80"> </th>
+								<th> <img src={{URL::to('public/images/' . $nhanvien->images)}}  width="80" height="80"> </th>
 								<td>
 									
 									@if (Auth::check())
 									@if( Auth::user()->level == 1)
 									<a href="formEdit/{{$nhanvien->id}}" class="btn btn-success btn-mini">Edit</a>
-									<a href="deleteNhanvien/{{$nhanvien->id}}" class="btn btn-danger btn-mini"></a>
-								<button class="btn btn-danger delete-link" value="{{$nhanvien->id}}">Delete
+								    <a><button class="btn btn-danger delete-link" value="{{$nhanvien->id}}">Delete</a>
 
 									@endif
 									
@@ -63,11 +62,9 @@ use App\Nhanvien;
 									
 								</td>
 								@endforeach
-                                @if (Auth::check())
-									@if( Auth::user()->level == 1)
+                                
 								<a  href="form_nhanvien" class="btn btn-success btn-mini">Thêm</a>
-								@endif
-								@endif
+								
 							</tr>
 
 						</tbody>
