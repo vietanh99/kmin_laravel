@@ -20,7 +20,7 @@ class bangcongController extends Controller
 }
     public function addBangcong(Request $request){
         $bangcong = new Bangcong();
-        $bangcong->name = $request->input('name');
+        $bangcong->name = $request->mail;
         $bangcong->bangcong = $request->input('socong');
         $bangcong->save();
         return view('bangcong');

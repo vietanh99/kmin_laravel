@@ -43,7 +43,7 @@ class nhanvienController extends Controller
             'password' => 'required',
             'tuoi' => 'required',
             'email' => 'required',
-            'phongban' => 'required',
+            //'phongban' => 'required',
             'level' => 'required',
             
 
@@ -54,7 +54,7 @@ class nhanvienController extends Controller
             'name.required' => 'Bạn chưa nhập họ tên',
             'tuoi.required' => 'Bạn chưa nhập tuổi',
             'email.required' => 'Bạn chưa nhập email',
-            'phongban.required' => 'Bạn chưa nhập phòng ban',
+            //'phongban.required' => 'Bạn chưa nhập phòng ban',
             'password.required' => 'Bạn chưa nhập mật khẩu',
             'level.required' => 'Bạn chưa nhập level',
             
@@ -63,6 +63,7 @@ class nhanvienController extends Controller
 
         ]);
         $nhanvien= new Nhanvien;
+        $nhanvien->phongban=$request->mail;
         $nhanvien->name=$request->input('name');
         $nhanvien->password=Hash::make($request->input('password'));
         //$nhanvien = Hash::make('password');
@@ -72,7 +73,7 @@ class nhanvienController extends Controller
 
 
         $nhanvien->email=$request->input('email');
-        $nhanvien->phongban=$request->input('phongban');
+        //dd($nhanvien);
             /*$nhanvien = $request->fileUpload;
             $new_image_name = time();
             $nhanvien->getClientOriginalName();
@@ -83,15 +84,15 @@ class nhanvienController extends Controller
             $nhanvien->save();*/
 
 
-        if($request->hasFile('fileUpload')){
+        /*if($request->hasFile('fileUpload')){
             if ($request->file('fileUpload')->isValid()){
                 $file_name = $request->file('fileUpload')->getClientOriginalName();
                 // Lưu file vào thư mục upload với tên là biến $filename
                 $request->file('fileUpload')->move('public/images',$file_name);
-            }}
+            }}*/
         
         
-        //$nhanvien->images=$request->input('fileUpload');
+        $nhanvien->images=$request->input('fileUpload');
 
         $nhanvien->save();
         return view('nhanvien') ;
@@ -136,4 +137,8 @@ class nhanvienController extends Controller
 
 
     } 
+    public function quaylai(){
+        return view('nhanvien');
+
+    }
 }

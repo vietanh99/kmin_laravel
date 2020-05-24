@@ -1,4 +1,4 @@
-
+<?php use App\Phongban; ?>
 @extends('layout.masterlayout')
 @section('content')
 <!-- BEGIN CONTENT -->
@@ -61,13 +61,18 @@
 										</div>
 
                                     </div>
-                                    <div class="control-group">
-										<label class="control-label">Phòng ban :</label>
+									<div class="control-group">
+										<label class="control-label">Chọn nhân viên </label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="Phòng ban" name = "phongban" /> *
-										</div>
-
-                                    </div>
+									<select name="mail">
+		
+								@foreach (Phongban::get() as $item)
+								<option value="{{$item->tenphongban}}" selected="mail">{{$item->tenphongban}}</option>
+								@endforeach
+		
+							</select>
+						</div>
+						</div>	
                                     <label class="control-label">Choose a Image :</label>
 								
 								<div class="control-group">

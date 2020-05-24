@@ -27,7 +27,6 @@ use App\Nhanvien;
 								<label class="control-label">Chọn nhân viên </label>
 								<div class="controls">
 							<select name="mail">
-								<option value="--Chọn--" >--Chọn--</option>
 
                         @foreach (Nhanvien::get() as $item)
 						<option value="{{$item->email}}" selected="mail">{{$item->email}}</option>

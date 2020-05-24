@@ -1,11 +1,12 @@
-<?php use App\Nhanvien;	 ?>
+<?php use App\Nhanvien; ?>
 @extends('layout.masterlayout')
 @section('content')
+
 <!-- BEGIN CONTENT -->
 <div id="content">
 	<div id="content-header">
 		<div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Bảng công</h1>
+		<h1>Add New Product</h1>
 	</div>
 	<div class="container-fluid">
 		<hr>
@@ -18,9 +19,8 @@
 					<div class="widget-content nopadding">
 
 						<!-- BEGIN USER FORM -->
-						
-							
-						<form action="addBangcong" method="get" class="form-horizontal" enctype="multipart/form-data">
+						<form action="addbaohiem" method="get" class="form-horizontal" enctype="multipart/form-data">
+
 							<div class="control-group">
 								<label class="control-label">Chọn nhân viên </label>
 								<div class="controls">
@@ -34,24 +34,13 @@
 				</div>
 				</div>
 							
-							<div class="control-group">
-								
-								<div class="control-group">
-									<div class="control-group">
-										<label class="control-label">Số công :</label>
-										<div class="controls">
-											<input type="text" class="span11" placeholder="Password" name = "socong" /> *
-										</div>
 
-                                    </div>
-                                    
 									<div class="form-actions">
 										<button type="submit" class="btn btn-success">Add</button>
 									</div>
 								</div>
 
-						</form>
-						
+                        </form>
 						<!-- END USER FORM -->
 
 
@@ -64,6 +53,4 @@
 
 <!-- END CONTENT -->
 
-<!--Footer-part-->
 @endsection
-

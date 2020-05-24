@@ -39,7 +39,7 @@ use App\Nhanvien;
 							</tr>
 							</thead>
 							<tbody>
-								@foreach(Nhanvien::get() as $nhanvien)
+								@foreach(Nhanvien::Paginate(5) as $nhanvien)
 
 							<tr >
 								
@@ -62,9 +62,14 @@ use App\Nhanvien;
 									
 								</td>
 								@endforeach
-                                
+
+                                @if (Auth::check())
+									@if( Auth::user()->level == 1)
 								<a  href="form_nhanvien" class="btn btn-success btn-mini">Thêm</a>
 								
+								@endif
+									
+								@endif
 							</tr>
 
 						</tbody>
@@ -75,13 +80,21 @@ use App\Nhanvien;
 							
 							
 						</ul>
-						
+					
+
 					</div>
+					<div class="container">
+							
+						<ul class="pagination">
+						  {!!Nhanvien::Paginate(1)->links()!!}
+						</ul>
+					  </div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 <!-- END CONTENT -->
 <!--Footer-part-->
 

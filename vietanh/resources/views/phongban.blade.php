@@ -9,6 +9,13 @@
 		<h1>Phòng ban</h1>
 	</div>
 	<div class="container-fluid">
+		@if (Auth::check())
+		@if( Auth::user()->level == 1)
+	<a href="form" class="btn btn-success btn-mini">Thêm</a>
+	@endif
+									
+								@endif
+
 		<hr>
 		<div class="row-fluid">
 			<div class="span12">
@@ -34,16 +41,16 @@
 							
 								
 								<td>
+								
 									@if (Auth::check())
 									@if( Auth::user()->level == 1)
-								<a href="form" class="btn btn-success btn-mini">Thêm</a>
-  
-									
+						
 									<a href="phongban/deletePhongban/{{$user->phongban_id }}" class="btn btn-danger btn-mini">Delete</a>
+									@endif
+																
+									@endif
 								</td>
-								@endif
-									
-								@endif
+								
 							</tr>
 							@endforeach
 						</tbody>

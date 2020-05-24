@@ -1,11 +1,11 @@
-<?php use App\Nhanvien;	 ?>
+<?php use App\Phongban; ?>
 @extends('layout.masterlayout')
 @section('content')
 <!-- BEGIN CONTENT -->
 <div id="content">
 	<div id="content-header">
 		<div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom current"><i class="icon-home"></i> Home</a></div>
-		<h1>Bảng công</h1>
+		<h1>Edit bảng lương</h1>
 	</div>
 	<div class="container-fluid">
 		<hr>
@@ -18,33 +18,38 @@
 					<div class="widget-content nopadding">
 
 						<!-- BEGIN USER FORM -->
-						
+						@foreach ($errors->all() as $error)
+					<li>{{$error}}</li>
 							
-						<form action="addBangcong" method="get" class="form-horizontal" enctype="multipart/form-data">
-							<div class="control-group">
-								<label class="control-label">Chọn nhân viên </label>
-								<div class="controls">
-							<select name="mail">
-
-                        @foreach (Nhanvien::get() as $item)
-						<option value="{{$item->email}}" selected="mail">{{$item->email}}</option>
 						@endforeach
-
-					</select>
-				</div>
-				</div>
+						<form action="geteditbangluong/{{$bangluong->id}}" method="get" class="form-horizontal" enctype="multipart/form-data">
+							<div class="control-group">
+								<label class="control-label">Email :</label>
+								<div class="controls">
+                                <input type="text" class="span11" placeholder="email" name="email" value="{{$bangluong['tennhanvien']}}" /> *
+								</div>
+							</div>
 							
 							<div class="control-group">
 								
 								<div class="control-group">
 									<div class="control-group">
-										<label class="control-label">Số công :</label>
+										<label class="control-label">Số công</label>
 										<div class="controls">
-											<input type="text" class="span11" placeholder="Password" name = "socong" /> *
+                                        <input type="text" class="span11" placeholder="socong" name = "socong" value="{{$bangluong['socong']}}" /> *
 										</div>
 
                                     </div>
-                                    
+                                    <div class="control-group">
+										<label class="control-label">Lương theo ngày</label>
+										<div class="controls">
+											<input type="text" class="span11" placeholder="luong" name = "luong" value="{{$bangluong['luongngay']}}" /> *
+										</div>
+									</div>
+									
+									
+                                  
+
 									<div class="form-actions">
 										<button type="submit" class="btn btn-success">Add</button>
 									</div>
@@ -61,9 +66,7 @@
 		</div>
 	</div>
 </div>
-
-<!-- END CONTENT -->
-
-<!--Footer-part-->
 @endsection
+
+
 

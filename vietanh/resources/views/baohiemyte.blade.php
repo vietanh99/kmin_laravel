@@ -1,4 +1,4 @@
- 
+ <?php use App\Baohiem; ?>
 @extends('layout.masterlayout')
 @section('content')
 <!-- BEGIN CONTENT -->
@@ -12,7 +12,7 @@
 		<div class="row-fluid">
 			<div class="span12">
 				<div class="widget-box">
-					
+					<a href="addbh" class="btn btn-success btn-mini">Thêm</a>
 					</div>
 					<div class="widget-content nopadding">
 						<table class="table table-bordered table-striped">
@@ -21,17 +21,22 @@
 							<thead>
 								
 								<th>Đã mua</th>
-                                <th>Chưa mua</th>
+								<th>Action</th>
+
 								
 							</tr>
 							</thead>
 							<tbody>
-							
+								@foreach (Baohiem::get() as $item)
+
 							<tr>
 								
+							     <td>{{$item->email}}</td>
+						
 								
-								<td>Phạm Viết Anh </td>
-								<td>Hồ Quang Hiếu </td>
+								<td>
+									<a href="deletebaohiem/{{$item->id}}" class="btn btn-success btn-mini">Delete</a></td>
+									@endforeach
 
 								
 							</tr>

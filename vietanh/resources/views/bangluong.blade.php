@@ -21,7 +21,7 @@ use App\bangluong;
 												<tr>
 													@if (Auth::check())
 													@if( Auth::user()->level == 1)
-												<a href="form_bangluong" class="btn btn-success btn-mini">Thêm</a>
+												<a href="{{URL::route('form_bangluong')}}" class="btn btn-success btn-mini">Thêm</a>
 												@endif
 									
 									@endif
@@ -53,10 +53,10 @@ use App\bangluong;
 							
 									@if (Auth::check())
 									@if( Auth::user()->level == 1)
-								<a href="form_bangluong" class="btn btn-success btn-mini">Thêm</a>
   
-									 
-									<a href="#" class="btn btn-danger btn-mini">Delete</a>
+								<a href="editbangluong/{{$bangluong->id}}" class="btn btn-danger btn-mini">Edit</a>
+
+								<a href="deletebangluong/{{$bangluong->id}}" class="btn btn-danger btn-mini">Delete</a>
 									@endif
 									
 									@endif

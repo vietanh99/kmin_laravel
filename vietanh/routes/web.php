@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\baohiemController;
 use App\Http\Controllers\phongbanController;
 use App\Nhanvien;
 use Illuminate\Support\Facades\Route;
@@ -60,7 +61,7 @@ Route::get('editBangcong/{id}' , 'bangcongController@getEdit');
 Route::get('editBangcong/postEdit_bangcong/{id}' , 'bangcongController@postEdit');
 Route::get('baohiemyte', ['as'=>'baohiemyte','uses'=>'baohiemyteController@index'] );
 Route::get('bangluong' , ['as'=>'bangluong' , 'uses'=>'bangluongController@index']);
-Route::get('form_bangluong', 'bangluongController@form_bangluong');
+Route::get('form_bangluong', ['as'=>'form_bangluong' , 'uses'=> 'bangluongController@form_bangluong'] );
 Route::get('addbangluong', 'bangluongController@addbangluong');
 Route::post('search','searchController@search');
 Route::delete('/links/{nhanvien_id?}', function ($nhanvien_id) {
@@ -68,6 +69,17 @@ Route::delete('/links/{nhanvien_id?}', function ($nhanvien_id) {
     //return Response::json($nhanvien);
 });
 Route::get('phongbanid/{id}', 'phongbanController@phongbanid' );
+Route::get('deletebangluong/{id}' , 'bangluongController@delete');
+Route::get('quaylai' ,['as' =>'quaylai' , 'uses' => 'nhanvienController@quaylai']);
+Route::get('editbangluong/{id}' , 'bangluongController@editbangluong');
+Route::get('editbangluong/geteditbangluong/{id}' , 'bangluongController@geteditbangluong');
+Route::get('deletebaohiem/{id}' , 'baohiemController@delete' );
+Route::get('addbh' , 'baohiemController@addbh' );
+Route::get('addbaohiem' , 'baohiemController@addbaohiem' );
+
+
+
+
 
 
 

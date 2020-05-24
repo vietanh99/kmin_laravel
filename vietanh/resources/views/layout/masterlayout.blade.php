@@ -92,8 +92,9 @@
 		<li> <a href="{{URL::route('nhanvien')}}"><i class="icon icon-th-list"></i> <span>Nhân viên</span></a></li>
         <li> <a href="{{URL::route('phongban')}}"><i class="icon icon-th-list"></i> <span>Phòng ban</span></a></li>
 		<li> <a href="{{URL::route('baohiemyte')}}"><i class="icon icon-th-list"></i> <span>Bảo hiểm y tế</span></a></li>
-        <li> <a href="{{URL::route('bangcong')}}"><i class="icon icon-th-list"></i> <span>Bảng công </span></a></li>
 		<li> <a href="{{URL::route('bangluong')}}"><i class="icon icon-th-list"></i> <span>Bảng lương</span></a></li>
+		<li> <a href="{{URL::route('quaylai')}}"><i class="icon icon-th-list"></i> <span> B</span></a></li>
+
 
 
 
@@ -105,12 +106,14 @@
 
 
 @yield('content')
+
 <script src="public/js/laracrud.js"></script>
 
 
 <div class="row-fluid">
 </div>
 <!--end-Footer-part-->
+
 <script src="public/js/jquery.min.js"></script>
 <script src="public/js/jquery.ui.custom.js"></script>
 <script src="public/js/bootstrap.min.js"></script>
